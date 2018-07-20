@@ -27,9 +27,9 @@
 #include<time.h>
 
 #define N 500
-#define m 1
-#define gamma2 2.5
-/* #define lambda 10 */
+/* #define m 1 */
+/* #define gamma2 2.5 */
+#define lambda 10
 #define Avoid 1
 #define NX 15
 #define figure 1
@@ -117,12 +117,12 @@ int main(int argc, char** argv){
 	/* Initialization */
 	for(i=0;i<N;i++){
 	/* Nodes are assigned desired generalized degree according to a scale-free distribution */
-		kgi[i]=(int)(m*pow(drand48(),-1./(gamma2-1.)));
-		/* kgi[i]= poisson(lambda); */
+		/*k gi[i]=(int)(m*pow(drand48(),-1./(gamma2-1.))); */
+		kgi[i]= poisson(lambda); 
 		while(kgi[i]>(N-1)*(N-2)*0.5){ 
 		/* Desired generalized degrees are re-drawn if they exceed the maximum possible generalized degree of a node (natural cut-off) */
-			kgi[i]=(int)(m*pow(drand48(),-1./(gamma2-1.)));
-			/* kgi[i]= poisson(lambda); */
+			/* kgi[i]=(int)(m*pow(drand48(),-1./(gamma2-1.))); */
+			kgi[i]= poisson(lambda);
 		}
 		kg[i]=0; /* Generalized degree of node i initially set to 0 */
 		k[i]=0;  /* Degree of node i initially set to 0 */
